@@ -57,14 +57,16 @@ void splitelementshouldbelast()
 	}
 		node*current=head;
 		node*prev=NULL;
+		node*before=NULL;
 		while(current!=NULL)
 		{
-			if(current->data==key&&current->link!=NULL)
+			if(current->data==key)
 			{
 				break;
 			}
 			prev=current;
 			current=current->link;
+			before=current->link;
 		}
 		if(current==NULL)
 		{
@@ -72,17 +74,17 @@ void splitelementshouldbelast()
 		}
 		else
 		{
-		    if(prev!=NULL)
+		    if(current!=NULL)
 			{
-				prev->link=NULL;
+				current->link=NULL;
 			}
 			else 
 		    {
                  head = NULL;
             }
-
+            
         linkedlist secondLinkedList;
-        secondLinkedList.head = current;
+        secondLinkedList.head =before;
         cout << "First Linked List:" << endl;
         display();
         cout << "Second Linked List:" <<endl;
