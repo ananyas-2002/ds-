@@ -1,14 +1,13 @@
 #include <iostream>
 using namespace std;
-
-void merge(int arr[], int l, int m, int r, int size)
+void merge(int arr[], int low, int mid, int high, int size)
 {
-    int i = l;
-    int j = m + 1;
-    int k = l;
+    int i = low;
+    int j = mid + 1;
+    int k = low;
     int temp[size];
 
-    while (i <= m && j <= r) 
+    while (i <= mid && j <= high) 
 	{
         if (arr[i] <= arr[j]) 
 		{
@@ -22,36 +21,34 @@ void merge(int arr[], int l, int m, int r, int size)
             k++;
         }
     }
-    while (i <= m) {
+    while (i <= mid) {
         temp[k] = arr[i];
         i++;
         k++;
     }
 
-    while (j <= r) {
+    while (j <= high) {
         temp[k] = arr[j];
         j++;
         k++;
     }
 
 
-    for (int p = l; p <= r; p++) {
+    for (int p = low; p <= high; p++) 
+	{
         arr[p] = temp[p];
     }
 }
-
-
-void mergeSort(int arr[], int l, int r, int size)
+void mergeSort(int arr[], int low, int high, int size)
 {
-    if (l < r) 
+    if (low < high) 
 	{
-        int m = (l + r) / 2;
-        mergeSort(arr, l, m, size);
-        mergeSort(arr, m + 1, r, size);
-        merge(arr, l, m, r, size);
+        int mid = (low + high) / 2;
+        mergeSort(arr, low, mid, size);
+        mergeSort(arr, mid + 1, high, size);
+        merge(arr, low, mid, high, size);
     }
 }
-
 int main()
 {
 	int size;
@@ -59,18 +56,21 @@ int main()
     cin >> size;
     int a[size];
     cout << "Enter " << size << " elements to the array: " << endl;
-    for (int i = 0; i < size; i++) {
+    for (int i = 0; i < size; i++) 
+	{
         cin >> a[i];
     }
     cout << "Before Sorting" << endl;
-    for (int i = 0; i < size; i++) {
+    for (int i = 0; i < size; i++) 
+	{
         cout << a[i] << " ";
     }
     cout << endl;
     mergeSort(a, 0, (size - 1), size); 
 
     cout << "After Sorting" << endl;
-    for (int i = 0; i < size; i++) {
+    for (int i = 0; i < size; i++) 
+	{
         cout << a[i] << " ";
     }
 
