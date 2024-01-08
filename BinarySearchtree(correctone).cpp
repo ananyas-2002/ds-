@@ -33,6 +33,30 @@ class binarysearchtree
 		}
 		return node;
 	}
+	
+	node* search(node* node, int ele) 
+	{
+    if (node != NULL) 
+	{
+        if (node->data == ele) 
+		{
+            cout << "Found" << endl;
+            return node;
+        }
+        if (ele > node->data) 
+		{
+            node->Rlink = search(node->Rlink, ele);
+        } else 
+		{
+            node->Llink = search(node->Llink, ele);
+        }
+    } 
+	else 
+	{
+        cout << "Element not found" << endl;
+    }
+   }
+
      node*deletion(node*root,int value)
     {
     	if(root==NULL)
@@ -116,7 +140,7 @@ class binarysearchtree
 int main()
 {
 	
-	int n,key;
+	int n,key,ele;
 	node * root = NULL;
 	binarysearchtree bst;
 	cout << "Enter number of elements : ";
@@ -138,6 +162,9 @@ int main()
 	cout<<"Postorder traversal:";
 	bst.postorder(root);
 	cout<<endl;
+	cout<<"Enter element to search:";
+	cin>>ele;
+	root=bst.search(root,ele);
 	cout<<"enter key to delete:";
 	cin>>key;
 	root=bst.deletion(root,key);
