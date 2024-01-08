@@ -1,6 +1,6 @@
 #include<iostream>
 using namespace std;
-void maxheapify(int *arr,int n,int i)
+void maxheapify(int arr[],int n,int i)
 {
 	int largest=i;
 	int left_child=2*i;
@@ -17,7 +17,7 @@ void maxheapify(int *arr,int n,int i)
     	maxheapify(arr,n,largest);
     }
 }
-void heapsort(int *arr,int n)
+void heapsort(int arr[],int n)
 {
 	 for (int i = n / 2 ; i >0; i--)
 	 {
@@ -30,7 +30,7 @@ void heapsort(int *arr,int n)
 		maxheapify(arr,i-1,1);
 	}
 }
-void printarray(int *arr,int n)
+void printarray(int arr[],int n)
 {
 	for (int i = 1; i <=n; ++i)
 		{
@@ -42,8 +42,8 @@ int main()
 	int n,i;
 	cout<<"enter size of the array:";
 	cin>>n;
-	int *arr=new int(n+1);
-	arr[0]=0;
+//	int *arr=new int(n+1);
+	int arr[n];
 	cout<<"enter array elements:";
 	for(i=1;i<=n;i++)
 	{
@@ -65,5 +65,5 @@ int main()
 	    cout<<endl;
 	    cout << "Sorted array is:"<<" ";
 	    printarray(arr,n);
-	    delete[] arr;
+//	    delete[] arr;
 }

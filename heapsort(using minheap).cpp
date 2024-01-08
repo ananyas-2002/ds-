@@ -1,6 +1,6 @@
 #include<iostream>
 using namespace std;
-void minheapify(int *arr,int n,int i)
+void minheapify(int arr[],int n,int i)
 {
 	int smallest=i;
 	int left_child=2*i;
@@ -17,14 +17,14 @@ void minheapify(int *arr,int n,int i)
     	minheapify(arr,n,smallest);
     }
 }
-void printarray(int *arr,int n)
+void printarray(int arr[],int n)
 {
 	for (int i = 1; i <=n; ++i)
 		{
 	     	cout << arr[i] << " ";
 	    }
 }
-void heapsort(int *arr,int n)
+void heapsort(int arr[],int n)
 {
 	 for (int i = n / 2 ; i >0; i--)
 	 {
@@ -42,8 +42,9 @@ int main()
 	int n,i;
 	cout<<"enter size of the array:";
 	cin>>n;
-	int *arr=new int(n+1);
-	arr[0]=0;
+	int arr[n];
+//	int *arr=new int(n+1);
+//	arr[0]=0;
 	cout<<"enter array elements:";
 	for(i=1;i<=n;i++)
 	{
@@ -64,5 +65,5 @@ int main()
 		heapsort(arr,n);
 		cout << "Sorted array is:"<<" ";
 	    printarray(arr,n);
-	    delete[] arr;
+//	    delete[] arr;
 }
