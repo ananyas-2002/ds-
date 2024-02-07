@@ -50,10 +50,10 @@ void MinMax(int arr[], int low, int high, int &min, int &max)
 
 int main()
 {
-    int i, n, arr[50];
+    int i, n;
     cout << "Enter the number of elements : ";
     cin >> n;
-
+    int arr[n];
     for (i = 0; i < n; i++)
     {
         cout << "Enter the element : ";
