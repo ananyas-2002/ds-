@@ -12,7 +12,7 @@ class Graph {
 	list<int>* adj;
 
 	// A function used by DFS
-	void DFSUtil(int v, bool visited[]);
+	void DFS(int v, bool visited[]);
 
 public:
 	// Constructor
@@ -37,7 +37,7 @@ int Graph::NumberOfconnectedComponents()
 
 	for (int v = 0; v < V; v++) {
 		if (visited[v] == false) {
-			DFSUtil(v, visited);
+			DFS(v, visited);
 			count += 1;
 		}
 	}
@@ -45,7 +45,7 @@ int Graph::NumberOfconnectedComponents()
 	return count;
 }
 
-void Graph::DFSUtil(int v, bool visited[])
+void Graph::DFS(int v, bool visited[])
 {
 
 	// Mark the current node as visited
@@ -57,7 +57,7 @@ void Graph::DFSUtil(int v, bool visited[])
 
 	for (i = adj[v].begin(); i != adj[v].end(); ++i)
 		if (!visited[*i])
-			DFSUtil(*i, visited);
+			DFS(*i, visited);
 }
 
 Graph::Graph(int V)
@@ -80,7 +80,6 @@ int main()
 	g.addEdge(1, 0);
 	g.addEdge(2, 3);
 	g.addEdge(3, 4);
-
 	cout <<"Number of connected components: "<<g.NumberOfconnectedComponents();
 
 	return 0;
